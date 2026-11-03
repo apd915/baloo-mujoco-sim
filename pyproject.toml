@@ -16,6 +16,8 @@ dependencies = [
     "toml<1.0.0,>=0.10.2",
     "PyYAML<7.0.0,>=6.0.2",
     "matplotlib==3.7.5",
+    "pandas>=2.0.3",
+    "baloo-gym",
 ]
 
 [project.scripts]
@@ -24,3 +26,6 @@ generate-baloo-xml = "baloo_mujoco_sim.utils.generate_baloo_xml:generate_xml"
 
 [tool.uv]
 package = true
+
+[tool.uv.sources]
+baloo-gym = { path = "../baloo-gym", editable = true }

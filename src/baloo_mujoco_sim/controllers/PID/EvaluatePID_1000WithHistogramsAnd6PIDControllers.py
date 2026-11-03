@@ -39,33 +39,19 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from tqdm import tqdm
 
-sys.path.append('/home/cameronc/baloo_ws/src/baloo-gym/src')
-
 import baloo_gym.policies.PIDHugger as pid_hugger
 pid_hugger.OpenLoopHuggerPolicy.print_pressures = lambda self, *args, **kwargs: None
 pid_hugger.OpenLoopHuggerPolicy.save_logs = lambda self, *args, **kwargs: None
 
 import mujoco
 
-def setup_plugins():
-    plugins = [
-        '/home/cameronc/baloo_ws/src/baloo-mujoco-sim/plugin/build/joint_angle_estimator/libjoint_angle_estimator.so',
-        '/home/cameronc/baloo_ws/src/baloo-mujoco-sim/plugin/build/ruckig_actuator/libRuckigActuator.so',
-        '/home/cameronc/baloo_ws/src/baloo-mujoco-sim/plugin/build/motion_profile_servo/libMotionProfileServo.so'
-    ]
-    for plugin_path in plugins:
-        try:
-            mujoco.mj_loadPluginLibrary(plugin_path)
-        except mujoco.FatalError as e:
-            if "already registered" in str(e):
-                pass
-            else:
-                raise e
+import baloo_mujoco_sim
+baloo_mujoco_sim.load_mujoco_plugins()
 
 # ---------------------------------------------------------------------------
 # Shared constants
 # ---------------------------------------------------------------------------
-MAX_STEPS_PER_TRIAL  = 480
+MAX_STEPS_PER_TRIAL  = 1200
 BOX_RISE_Z_DELTA     = 0.5
 TIP_ANGLE_COS        = np.cos(np.radians(80.0))
 
@@ -151,7 +137,7 @@ def run_single_trial(perturbation_magnitude, render_mode=None,
         joint_max     — (6,) max pressure per joint across the trial
         all_pressures — (T, 6, 4) if record_all_steps else None
     """
-    setup_plugins()
+    # setup_plugins()
 
     from baloo_gym.envs.baloo_v9 import BalooV9
     from baloo_gym.policies.PIDHugger import OpenLoopHuggerPolicy
@@ -183,7 +169,7 @@ def run_single_trial(perturbation_magnitude, render_mode=None,
 
     xsize, ysize, zsize = env.unwrapped.object_attr[0:3]
     mass     = env.unwrapped.object_attr[3]
-    rotation = env.unwrapped.object_zrotation_val
+    rotation = env.unwrapped.object_zrotation
 
     joint_max   = np.full(6, -np.inf)
     step_buffer = [] if record_all_steps else None
@@ -191,6 +177,8 @@ def run_single_trial(perturbation_magnitude, render_mode=None,
     initial_z   = None
     step_count  = 0
     pid_activated = False
+    pid_armed = False
+
 
     while step_count < MAX_STEPS_PER_TRIAL:
         current_z = data.xipos[box_body_id][2]
@@ -202,6 +190,9 @@ def run_single_trial(perturbation_magnitude, render_mode=None,
 
         if active_policy.pid_was_active:
             pid_activated = True
+
+        if active_policy.pid_was_armed:
+            pid_armed = True
 
         step_pressures = _get_step_pressures(model, data)
         joint_max = np.maximum(joint_max, step_pressures.max(axis=1))
@@ -229,12 +220,14 @@ def run_single_trial(perturbation_magnitude, render_mode=None,
         "box_xsize":     xsize,
         "box_ysize":     ysize,
         "box_zsize":     zsize,
+        "pid_armed":     pid_armed,
         "pid_activated": pid_activated,
         "slipped":       outcome == "timeout",
         "tipped":        outcome == "tip",
         "success":       outcome == "success",
         "outcome":       outcome,
     }
+
 
     all_pressures = np.stack(step_buffer, axis=0) if record_all_steps else None
     return result, joint_max, all_pressures
@@ -459,7 +452,8 @@ def run_condition(perturbation_magnitude, suffix, num_trials,
         print(f"  Trial {i+1}/{num_detail} starting...")
         res, jmax, all_pres = run_single_trial(
             perturbation_magnitude,
-            render_mode='human',
+            # render_mode='human',
+            render_mode=None,
             record_all_steps=True,
         )
         max_results[i] = jmax
@@ -568,7 +562,7 @@ if __name__ == '__main__':
     parser.add_argument("--num_detail",  type=int, default=10,
                         help="Trials to run with viewer + full pressure recording")
     parser.add_argument("--output_dir",  type=str,
-                        default="/home/cameronc/evaluation_results")
+                        default=os.path.expanduser("~/Documents/evaluation_results"))
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)

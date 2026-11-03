@@ -13,7 +13,7 @@ from baloo_mujoco_sim.utils.baloo_mj_api import (
 from scipy.spatial.transform import Rotation as R
 import sys
 import baloo_mujoco_sim
-sys.path.insert(0, '/home/randonsandall/baloo-gym/paper_data/perturbations')
+sys.path.insert(0, '/home/radlab/baloo-ws/baloo-gym/paper_data/perturbations')
 from policy_eval_under_perturbations import load_or_generate_lhs_samples
 
 N_SAMPLES     = 31

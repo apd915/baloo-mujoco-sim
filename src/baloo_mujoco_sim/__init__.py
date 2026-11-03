@@ -3,6 +3,8 @@
 import subprocess
 from pathlib import Path as path
 
+import mujoco
+
 
 def find_xml_files_in_assets(package_name):
     """
@@ -14,6 +16,53 @@ def find_xml_files_in_assets(package_name):
     xml_files = list(assets_path.glob('*.xml'))
     return [str(xml_file) for xml_file in xml_files]
 
+
+def load_mujoco_plugins():
+    """
+    Load the custom MuJoCo plugins required by the Baloo model.
+    """
+
+    # __file__ is:
+    # baloo-mujoco-sim/src/baloo_mujoco_sim/__init__.py
+    #
+    # parents[0] = baloo_mujoco_sim
+    # parents[1] = src
+    # parents[2] = baloo-mujoco-sim
+    repo_root = path(__file__).resolve().parents[2]
+
+    plugins = [
+        repo_root
+        / "plugin"
+        / "build"
+        / "joint_angle_estimator"
+        / "libjoint_angle_estimator.so",
+
+        repo_root
+        / "plugin"
+        / "build"
+        / "ruckig_actuator"
+        / "libRuckigActuator.so",
+    ]
+
+    for plugin in plugins:
+        if not plugin.exists():
+            raise FileNotFoundError(
+                f"Required MuJoCo plugin not found:\n{plugin}"
+            )
+
+        try:
+            print(f"Loading MuJoCo plugin: {plugin}")
+            mujoco.mj_loadPluginLibrary(str(plugin))
+        except mujoco.FatalError as e:
+            if "already registered" in str(e):
+                pass
+            else:
+                raise e
+
+
+# Load plugins when baloo_mujoco_sim is imported.
+# This must happen before loading any XML that references them.
+load_mujoco_plugins()
 
 # Example usage
 package_name = 'baloo_mujoco_sim'

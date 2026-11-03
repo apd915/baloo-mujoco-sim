@@ -49,32 +49,30 @@
   <asset>
     <texture name="texplane" type="2d" builtin="checker" mark="cross" width="512" height="512"/>
     <material name="groundplane" class="/" texture="texplane" texuniform="true"/>
-    <texture name="chest_texture" type="2d" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/SimpleChestColors.png"/>
-    <texture name="hand_prints" type="2d" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/link0_colors.png"/>
+    <texture name="chest_texture" type="2d" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/SimpleChestColors.png"/>
     <material name="chest_material" class="/" texture="chest_texture"/>
-    <material name="hand_prints_material" class="/" texture="hand_prints" texuniform="true"/>
-    <mesh name="RightFrontWheelMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightFrontWheelMesh.stl"/>
-    <mesh name="EstopPlugMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/EstopPlugMesh.stl"/>
-    <mesh name="LeftBackWheelMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftBackWheelMesh.stl"/>
-    <mesh name="PowerButtonMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/PowerButtonMesh.stl"/>
-    <mesh name="EthernetJackMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/EthernetJackMesh.stl"/>
-    <mesh name="StepperMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/StepperMesh.stl"/>
-    <mesh name="LinearActuatorMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LinearActuatorMesh.stl"/>
-    <mesh name="RightBackWheelMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightBackWheelMesh.stl"/>
-    <mesh name="PneumaticInletMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/PneumaticInletMesh.stl"/>
-    <mesh name="ControlBoxMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/ControlBoxMesh.stl"/>
-    <mesh name="LeftBackWheelFootMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftBackWheelFootMesh.stl"/>
-    <mesh name="meshed_cube" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/meshed_cube.stl"/>
-    <mesh name="LeftBaseMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftBaseMesh.stl"/>
-    <mesh name="BaseFrameMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/BaseFrameMesh.stl"/>
-    <mesh name="SimpleShoulderMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/SimpleShoulderMesh.stl"/>
-    <mesh name="LeftFrontWheelMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftFrontWheelMesh.stl"/>
-    <mesh name="RightFrontWheelFootMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightFrontWheelFootMesh.stl"/>
-    <mesh name="LeftFrontWheelFootMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftFrontWheelFootMesh.stl"/>
-    <mesh name="SimpleChestMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/SimpleChestMesh.obj"/>
-    <mesh name="LCDScreenMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LCDScreenMesh.stl"/>
-    <mesh name="RightBaseMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightBaseMesh.stl"/>
-    <mesh name="RightBackWheelFootMesh" class="/" file="/home/curtis/baloo/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightBackWheelFootMesh.stl"/>
+    <mesh name="RightFrontWheelMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightFrontWheelMesh.stl"/>
+    <mesh name="EstopPlugMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/EstopPlugMesh.stl"/>
+    <mesh name="LeftBackWheelMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftBackWheelMesh.stl"/>
+    <mesh name="PowerButtonMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/PowerButtonMesh.stl"/>
+    <mesh name="EthernetJackMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/EthernetJackMesh.stl"/>
+    <mesh name="StepperMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/StepperMesh.stl"/>
+    <mesh name="LinearActuatorMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LinearActuatorMesh.stl"/>
+    <mesh name="RightBackWheelMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightBackWheelMesh.stl"/>
+    <mesh name="PneumaticInletMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/PneumaticInletMesh.stl"/>
+    <mesh name="ControlBoxMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/ControlBoxMesh.stl"/>
+    <mesh name="LeftBackWheelFootMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftBackWheelFootMesh.stl"/>
+    <mesh name="meshed_cube" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/meshed_cube.stl"/>
+    <mesh name="LeftBaseMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftBaseMesh.stl"/>
+    <mesh name="BaseFrameMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/BaseFrameMesh.stl"/>
+    <mesh name="SimpleShoulderMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/SimpleShoulderMesh.stl"/>
+    <mesh name="LeftFrontWheelMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftFrontWheelMesh.stl"/>
+    <mesh name="RightFrontWheelFootMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightFrontWheelFootMesh.stl"/>
+    <mesh name="LeftFrontWheelFootMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LeftFrontWheelFootMesh.stl"/>
+    <mesh name="SimpleChestMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/SimpleChestMesh.obj"/>
+    <mesh name="LCDScreenMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/LCDScreenMesh.stl"/>
+    <mesh name="RightBaseMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightBaseMesh.stl"/>
+    <mesh name="RightBackWheelFootMesh" class="/" file="/home/radlab/baloo-ws/baloo-mujoco-sim/src/baloo_mujoco_sim/assets/meshes/RightBackWheelFootMesh.stl"/>
     <material name="vention_blue" class="/" reflectance="1" rgba="0 0.15686274509803921 0.31372549019607843 1"/>
     <material name="matte_black" class="/" reflectance="0.20000000000000001" rgba="0 0 0 1"/>
     <material name="cream" class="/" reflectance="0.20000000000000001" rgba="0.90000000000000002 0.90000000000000002 0.90000000000000002 1"/>
